@@ -74,4 +74,17 @@ public class MemoryTest {
 
     assertThat(memory.currentPointerPosition()).isEqualTo(1);
   }
+
+  @Test
+  void should_increment_two_memory_positions() {
+    Memory memory = new Memory();
+
+    memory.increment();
+    assertThat(memory.currentValuePosition()).isEqualTo((char) 1);
+
+    memory.incrementPointer();
+    memory.increment();
+    memory.increment();
+    assertThat(memory.currentValuePosition()).isEqualTo((char) 2);
+  }
 }
