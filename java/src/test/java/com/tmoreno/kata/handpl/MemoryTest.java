@@ -1,5 +1,6 @@
 package com.tmoreno.kata.handpl;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -56,5 +57,21 @@ public class MemoryTest {
     }
 
     assertThat(memory.currentValuePosition()).isEqualTo((char) expectedValue);
+  }
+
+  @Test
+  void should_be_zero_when_initialize_memory() {
+    Memory memory = new Memory();
+
+    assertThat(memory.currentPointerPosition()).isEqualTo(0);
+  }
+
+  @Test
+  void should_be_one_when_increment_position() {
+    Memory memory = new Memory();
+
+    memory.incrementPointer();
+
+    assertThat(memory.currentPointerPosition()).isEqualTo(1);
   }
 }

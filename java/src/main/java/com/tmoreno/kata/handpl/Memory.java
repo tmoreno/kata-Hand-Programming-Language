@@ -3,9 +3,11 @@ package com.tmoreno.kata.handpl;
 public final class Memory {
 
   private int currentValuePosition;
+  private int currentPointerPosition;
 
   public Memory() {
     currentValuePosition = 0;
+    currentPointerPosition = 0;
   }
 
   public void increment() {
@@ -17,10 +19,14 @@ public final class Memory {
   }
 
   public void incrementPointer() {
-    throw new UnsupportedOperationException();
+    currentPointerPosition++;
   }
 
   public char currentValuePosition() {
     return (char) currentValuePosition;
+  }
+
+  public int currentPointerPosition() {
+    return currentPointerPosition;
   }
 }
