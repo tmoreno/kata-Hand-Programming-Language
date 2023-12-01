@@ -13,7 +13,7 @@ public final class Memory {
   }
 
   public void decrement() {
-    throw new UnsupportedOperationException();
+    currentValuePosition = Math.floorMod(currentValuePosition - 1, 256);
   }
 
   public char currentValuePosition() {
