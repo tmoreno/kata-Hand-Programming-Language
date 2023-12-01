@@ -14,7 +14,7 @@ public class HandPLTest {
   void should_print_A() {
     Printer printer = mock(Printer.class);
 
-    HandPL handPL = new HandPL();
+    HandPL handPL = new HandPL(printer);
 
     String instructions = "👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👊";
     handPL.execute(instructions);
