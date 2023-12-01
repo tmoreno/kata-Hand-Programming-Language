@@ -1,11 +1,18 @@
 package com.tmoreno.kata.handpl;
 
 public final class Memory {
+
+  private int currentValuePosition;
+
+  public Memory() {
+    currentValuePosition = 0;
+  }
+
   public void increment() {
-    throw new UnsupportedOperationException();
+    currentValuePosition++;
   }
 
   public char currentValuePosition() {
-    throw new UnsupportedOperationException();
+    return (char) currentValuePosition;
   }
 }
