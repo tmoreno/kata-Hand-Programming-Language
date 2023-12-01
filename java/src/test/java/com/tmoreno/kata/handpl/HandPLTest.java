@@ -33,4 +33,16 @@ public class HandPLTest {
 
     verify(printer).print('B');
   }
+
+  @Test
+  void should_print_C() {
+    Memory memory = new Memory();
+    Printer printer = mock(Printer.class);
+    HandPL handPL = new HandPL(memory, printer);
+
+    String instructions = "👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👊";
+    handPL.execute(instructions);
+
+    verify(printer).print('C');
+  }
 }
