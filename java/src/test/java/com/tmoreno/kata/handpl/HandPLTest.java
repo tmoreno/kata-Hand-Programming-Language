@@ -2,12 +2,10 @@ package com.tmoreno.kata.handpl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class HandPLTest {
@@ -26,9 +24,7 @@ public class HandPLTest {
 
   @Test
   void should_print_B() {
-    Memory memory = mock(Memory.class);
-    when(memory.currentValuePosition()).thenReturn('B');
-
+    Memory memory = new Memory();
     Printer printer = mock(Printer.class);
     HandPL handPL = new HandPL(memory, printer);
 
