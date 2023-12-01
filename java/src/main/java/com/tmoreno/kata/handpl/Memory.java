@@ -12,6 +12,10 @@ public final class Memory {
     currentValuePosition = (currentValuePosition + 1) % 255;
   }
 
+  public void decrement() {
+    throw new UnsupportedOperationException();
+  }
+
   public char currentValuePosition() {
     return (char) currentValuePosition;
   }

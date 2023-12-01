@@ -17,6 +17,7 @@ public final class HandPL {
       .forEach(instruction -> {
         switch (instruction) {
           case "👆" -> memory.increment();
+          case "👇" -> memory.decrement();
           case "👊" -> printer.print(memory.currentValuePosition());
         }
       });
