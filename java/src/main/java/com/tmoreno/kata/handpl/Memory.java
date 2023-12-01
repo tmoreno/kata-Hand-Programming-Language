@@ -16,6 +16,10 @@ public final class Memory {
     currentValuePosition = Math.floorMod(currentValuePosition - 1, 256);
   }
 
+  public void incrementPointer() {
+    throw new UnsupportedOperationException();
+  }
+
   public char currentValuePosition() {
     return (char) currentValuePosition;
   }

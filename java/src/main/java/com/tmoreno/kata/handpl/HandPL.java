@@ -18,6 +18,7 @@ public final class HandPL {
         switch (instruction) {
           case "👆" -> memory.increment();
           case "👇" -> memory.decrement();
+          case "👉" -> memory.incrementPointer();
           case "👊" -> printer.print(memory.currentValuePosition());
         }
       });
