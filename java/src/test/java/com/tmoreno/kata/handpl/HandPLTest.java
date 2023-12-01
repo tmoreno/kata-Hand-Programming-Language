@@ -6,18 +6,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class HandPLTest {
 
   @Test
   void should_print_A() {
-    Memory memory = mock(Memory.class);
-    when(memory.currentValuePosition()).thenReturn('A');
-
+    Memory memory = new Memory();
     Printer printer = mock(Printer.class);
-
     HandPL handPL = new HandPL(memory, printer);
 
     String instructions = "👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👊";
