@@ -1,6 +1,5 @@
 package com.tmoreno.kata.handpl;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -35,44 +34,27 @@ public class MemoryTest {
     assertThat(memory.currentValuePosition()).isEqualTo((char) expectedValue);
   }
 
-  @Test
-  void should_decrement_current_value_by_one() {
-    Memory memory = new Memory();
-
-    memory.decrement();
-
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 255);
+  private static Stream<Arguments> argumentsForDecrements() {
+    return Stream.of(
+      Arguments.of(0, 0),
+      Arguments.of(1, 255),
+      Arguments.of(2, 254),
+      Arguments.of(255, 1),
+      Arguments.of(256, 0),
+      Arguments.of(257, 255),
+      Arguments.of(258, 254)
+    );
   }
 
-  @Test
-  void should_decrement_current_value_by_two() {
+  @MethodSource("argumentsForDecrements")
+  @ParameterizedTest
+  void should_decrement_as_expected(int times, int expectedValue) {
     Memory memory = new Memory();
 
-    memory.decrement();
-    memory.decrement();
-
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 254);
-  }
-
-  @Test
-  void should_be_1_when_decrement_255_times() {
-    Memory memory = new Memory();
-
-    for (int i = 0; i < 255; i++) {
+    for (int i = 0; i < times; i++) {
       memory.decrement();
     }
 
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 1);
-  }
-
-  @Test
-  void should_be_zero_when_decrement_256_times() {
-    Memory memory = new Memory();
-
-    for (int i = 0; i < 256; i++) {
-      memory.decrement();
-    }
-
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 0);
+    assertThat(memory.currentValuePosition()).isEqualTo((char) expectedValue);
   }
 }
