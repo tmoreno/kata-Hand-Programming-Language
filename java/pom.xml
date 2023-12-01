@@ -18,7 +18,7 @@
         <junit.jupiter.version>5.9.0</junit.jupiter.version>
         <assertj.version>3.23.1</assertj.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <mockito.version>4.8.0</mockito.version>
+        <mockito.version>5.7.0</mockito.version>
 
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
