@@ -5,12 +5,10 @@ import java.util.List;
 
 public final class Memory {
 
-  private final List<Integer> values;
-  private int currentValuePosition;
   private int currentPointerPosition;
+  private final List<Integer> values;
 
   public Memory() {
-    currentValuePosition = 0;
     currentPointerPosition = 0;
     values = new ArrayList<>();
     values.add(0);
