@@ -9,7 +9,7 @@ public final class Memory {
   }
 
   public void increment() {
-    currentValuePosition = (currentValuePosition + 1) % 255;
+    currentValuePosition = (currentValuePosition + 1) % 256;
   }
 
   public void decrement() {

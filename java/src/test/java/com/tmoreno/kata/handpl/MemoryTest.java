@@ -33,24 +33,24 @@ public class MemoryTest {
   }
 
   @Test
-  void should_be_zero_when_increment_255_times() {
+  void should_be_255_when_increment_255_times() {
     Memory memory = new Memory();
 
     for (int i = 0; i < 255; i++) {
       memory.increment();
     }
 
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 0);
+    assertThat(memory.currentValuePosition()).isEqualTo((char) 255);
   }
 
   @Test
-  void should_be_one_when_increment_256_times() {
+  void should_be_zero_when_increment_256_times() {
     Memory memory = new Memory();
 
     for (int i = 0; i < 256; i++) {
       memory.increment();
     }
 
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 1);
+    assertThat(memory.currentValuePosition()).isEqualTo((char) 0);
   }
 }
