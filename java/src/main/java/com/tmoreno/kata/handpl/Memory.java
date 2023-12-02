@@ -31,6 +31,10 @@ public final class Memory {
     values.add(0);
   }
 
+  public void decrementPointer() {
+    throw new UnsupportedOperationException();
+  }
+
   public char getCurrentValue() {
     return (char) values.get(pointerPosition).intValue();
   }

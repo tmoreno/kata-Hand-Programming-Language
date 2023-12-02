@@ -19,6 +19,7 @@ public final class HandPL {
           case "👆" -> memory.incrementCurrentValue();
           case "👇" -> memory.decrementCurrentValue();
           case "👉" -> memory.incrementPointer();
+          case "👈" -> memory.decrementPointer();
           case "👊" -> printer.print(memory.getCurrentValue());
         }
       });
