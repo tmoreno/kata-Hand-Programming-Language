@@ -16,10 +16,10 @@ public final class HandPL {
       .mapToObj(Character::toString)
       .forEach(instruction -> {
         switch (instruction) {
-          case "👆" -> memory.increment();
-          case "👇" -> memory.decrement();
+          case "👆" -> memory.incrementCurrentValue();
+          case "👇" -> memory.decrementCurrentValue();
           case "👉" -> memory.incrementPointer();
-          case "👊" -> printer.print(memory.currentValuePosition());
+          case "👊" -> printer.print(memory.getCurrentValue());
         }
       });
   }

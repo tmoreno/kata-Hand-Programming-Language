@@ -5,37 +5,37 @@ import java.util.List;
 
 public final class Memory {
 
-  private int currentPointerPosition;
+  private int pointerPosition;
   private final List<Integer> values;
 
   public Memory() {
-    currentPointerPosition = 0;
+    pointerPosition = 0;
     values = new ArrayList<>();
     values.add(0);
   }
 
-  public void increment() {
-    int currentValue = values.get(currentPointerPosition);
+  public void incrementCurrentValue() {
+    int currentValue = values.get(pointerPosition);
     int newValue = Math.floorMod(currentValue + 1, 256);
-    values.set(currentPointerPosition, newValue);
+    values.set(pointerPosition, newValue);
   }
 
-  public void decrement() {
-    int currentValue = values.get(currentPointerPosition);
+  public void decrementCurrentValue() {
+    int currentValue = values.get(pointerPosition);
     int newValue = Math.floorMod(currentValue - 1, 256);
-    values.set(currentPointerPosition, newValue);
+    values.set(pointerPosition, newValue);
   }
 
   public void incrementPointer() {
-    currentPointerPosition++;
+    pointerPosition++;
     values.add(0);
   }
 
-  public char currentValuePosition() {
-    return (char) values.get(currentPointerPosition).intValue();
+  public char getCurrentValue() {
+    return (char) values.get(pointerPosition).intValue();
   }
 
-  public int currentPointerPosition() {
-    return currentPointerPosition;
+  public int getPointerPosition() {
+    return pointerPosition;
   }
 }

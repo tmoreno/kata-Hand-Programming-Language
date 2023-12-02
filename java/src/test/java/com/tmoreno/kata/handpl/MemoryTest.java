@@ -29,10 +29,10 @@ public class MemoryTest {
     Memory memory = new Memory();
 
     for (int i = 0; i < times; i++) {
-      memory.increment();
+      memory.incrementCurrentValue();
     }
 
-    assertThat(memory.currentValuePosition()).isEqualTo((char) expectedValue);
+    assertThat(memory.getCurrentValue()).isEqualTo((char) expectedValue);
   }
 
   private static Stream<Arguments> argumentsForDecrements() {
@@ -53,17 +53,17 @@ public class MemoryTest {
     Memory memory = new Memory();
 
     for (int i = 0; i < times; i++) {
-      memory.decrement();
+      memory.decrementCurrentValue();
     }
 
-    assertThat(memory.currentValuePosition()).isEqualTo((char) expectedValue);
+    assertThat(memory.getCurrentValue()).isEqualTo((char) expectedValue);
   }
 
   @Test
   void should_be_zero_when_initialize_memory() {
     Memory memory = new Memory();
 
-    assertThat(memory.currentPointerPosition()).isEqualTo(0);
+    assertThat(memory.getPointerPosition()).isEqualTo(0);
   }
 
   @Test
@@ -72,19 +72,19 @@ public class MemoryTest {
 
     memory.incrementPointer();
 
-    assertThat(memory.currentPointerPosition()).isEqualTo(1);
+    assertThat(memory.getPointerPosition()).isEqualTo(1);
   }
 
   @Test
   void should_increment_two_memory_positions() {
     Memory memory = new Memory();
 
-    memory.increment();
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 1);
+    memory.incrementCurrentValue();
+    assertThat(memory.getCurrentValue()).isEqualTo((char) 1);
 
     memory.incrementPointer();
-    memory.increment();
-    memory.increment();
-    assertThat(memory.currentValuePosition()).isEqualTo((char) 2);
+    memory.incrementCurrentValue();
+    memory.incrementCurrentValue();
+    assertThat(memory.getCurrentValue()).isEqualTo((char) 2);
   }
 }
