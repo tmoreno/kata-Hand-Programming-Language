@@ -6,10 +6,14 @@ public final class HandPL {
 
   private final Memory memory;
   private final Printer printer;
+  private int rightFistsToOmit;
+  private int leftFistsToOmit;
 
   public HandPL(Memory memory, Printer printer) {
     this.memory = memory;
     this.printer = printer;
+    rightFistsToOmit = 0;
+    leftFistsToOmit = 0;
   }
 
   public void execute(String instructions) {
@@ -25,8 +29,27 @@ public final class HandPL {
         case "👉" -> memory.incrementPointer();
         case "👈" -> memory.decrementPointer();
         case "🤜" -> {
+          if (leftFistsToOmit > 0) {
+            leftFistsToOmit--;
+            break;
+          }
+
           if (memory.getCurrentValue() == (char) 0) {
             i = findInstructionPositionFrom("🤛", i, instructionsList);
+          } else {
+            rightFistsToOmit++;
+          }
+        }
+        case "🤛" -> {
+          if (rightFistsToOmit > 0) {
+            rightFistsToOmit--;
+            break;
+          }
+
+          if (memory.getCurrentValue() != (char) 0) {
+            i = findInstructionPositionFrom("🤜", i, instructionsList);
+          } else {
+            leftFistsToOmit++;
           }
         }
         case "👊" -> printer.print(memory.getCurrentValue());
