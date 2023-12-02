@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class HandPLTest {
@@ -93,5 +94,19 @@ public class HandPLTest {
     inOrder.verify(printer).print('O');
     inOrder.verify(printer).print('L');
     inOrder.verify(printer).print('A');
+  }
+
+  @Test
+  void should_print_A_with_goto() {
+    Memory memory = Mockito.mock(Memory.class);
+    when(memory.getCurrentValue()).thenReturn('A');
+
+    Printer printer = mock(Printer.class);
+    HandPL handPL = new HandPL(memory, printer);
+
+    String instructions = "🤜👆🤛👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👊";
+    handPL.execute(instructions);
+
+    verify(printer).print('A');
   }
 }
