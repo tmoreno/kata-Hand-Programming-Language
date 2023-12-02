@@ -24,8 +24,23 @@ public final class HandPL {
         case "👇" -> memory.decrementCurrentValue();
         case "👉" -> memory.incrementPointer();
         case "👈" -> memory.decrementPointer();
+        case "🤜" -> {
+          if (memory.getCurrentValue() == (char) 0) {
+            i = findInstructionPositionFrom("🤛", i, instructionsList);
+          }
+        }
         case "👊" -> printer.print(memory.getCurrentValue());
       }
     }
+  }
+
+  private int findInstructionPositionFrom(String instruction, int fromPosition, List<String> instructions) {
+    for (int i = fromPosition + 1; i < instructions.size(); i++) {
+      if (instructions.get(i).equals(instruction)) {
+        return i;
+      }
+    }
+
+    return instructions.size();
   }
 }

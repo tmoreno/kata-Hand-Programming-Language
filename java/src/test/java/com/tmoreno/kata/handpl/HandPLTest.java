@@ -98,9 +98,7 @@ public class HandPLTest {
 
   @Test
   void should_print_A_with_goto() {
-    Memory memory = Mockito.mock(Memory.class);
-    when(memory.getCurrentValue()).thenReturn('A');
-
+    Memory memory = new Memory();
     Printer printer = mock(Printer.class);
     HandPL handPL = new HandPL(memory, printer);
 
