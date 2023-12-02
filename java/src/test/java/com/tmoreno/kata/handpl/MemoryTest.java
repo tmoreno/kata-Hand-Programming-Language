@@ -87,4 +87,43 @@ public class MemoryTest {
     memory.incrementCurrentValue();
     assertThat(memory.getCurrentValue()).isEqualTo((char) 2);
   }
+
+  @Test
+  void should_be_zero_when_decrement_position_in_initial_state() {
+    Memory memory = new Memory();
+
+    memory.decrementPointer();
+
+    assertThat(memory.getPointerPosition()).isEqualTo(0);
+  }
+
+  @Test
+  void should_decrease_pointer_position() {
+    Memory memory = new Memory();
+
+    memory.incrementPointer();
+    memory.incrementPointer();
+    memory.decrementPointer();
+
+    assertThat(memory.getPointerPosition()).isEqualTo(1);
+  }
+
+  @Test
+  void should_decrease_pointer_to_max_position() {
+    Memory memory = new Memory();
+
+    memory.incrementPointer();
+    memory.incrementPointer();
+    memory.incrementPointer();
+    memory.incrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+    memory.decrementPointer();
+
+    assertThat(memory.getPointerPosition()).isEqualTo(2);
+  }
 }

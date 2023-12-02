@@ -6,10 +6,12 @@ import java.util.List;
 public final class Memory {
 
   private int pointerPosition;
+  private int maxPointerPosition;
   private final List<Integer> values;
 
   public Memory() {
     pointerPosition = 0;
+    maxPointerPosition = 0;
     values = new ArrayList<>();
     values.add(0);
   }
@@ -29,10 +31,18 @@ public final class Memory {
   public void incrementPointer() {
     pointerPosition++;
     values.add(0);
+
+    if (pointerPosition > maxPointerPosition) {
+      maxPointerPosition = pointerPosition;
+    }
   }
 
   public void decrementPointer() {
-    throw new UnsupportedOperationException();
+    pointerPosition--;
+
+    if (pointerPosition < 0) {
+      pointerPosition = maxPointerPosition;
+    }
   }
 
   public char getCurrentValue() {
