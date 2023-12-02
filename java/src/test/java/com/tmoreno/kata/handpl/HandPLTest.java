@@ -2,6 +2,7 @@ package com.tmoreno.kata.handpl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -76,14 +77,8 @@ public class HandPLTest {
   }
 
   @Test
-  void should_print_MANO() {
-    Memory memory = Mockito.mock(Memory.class);
-    when(memory.getCurrentValue())
-      .thenReturn('M')
-      .thenReturn('A')
-      .thenReturn('N')
-      .thenReturn('O');
-
+  void should_print_MOLA() {
+    Memory memory = new Memory();
     Printer printer = mock(Printer.class);
     HandPL handPL = new HandPL(memory, printer);
 
@@ -93,9 +88,10 @@ public class HandPLTest {
       "👈👇👊👇👇👇👇👇👇👇👇👇👇👇👊";
     handPL.execute(instructions);
 
-    verify(printer).print('M');
-    verify(printer).print('A');
-    verify(printer).print('N');
-    verify(printer).print('O');
+    InOrder inOrder = Mockito.inOrder(printer);
+    inOrder.verify(printer).print('M');
+    inOrder.verify(printer).print('O');
+    inOrder.verify(printer).print('L');
+    inOrder.verify(printer).print('A');
   }
 }
