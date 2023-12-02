@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class HandPLTest {
@@ -70,10 +69,11 @@ public class HandPLTest {
         "👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👊";
     handPL.execute(instructions);
 
-    verify(printer).print('H');
-    verify(printer).print('o');
-    verify(printer).print('l');
-    verify(printer).print('a');
+    InOrder inOrder = Mockito.inOrder(printer);
+    inOrder.verify(printer).print('H');
+    inOrder.verify(printer).print('o');
+    inOrder.verify(printer).print('l');
+    inOrder.verify(printer).print('a');
   }
 
   @Test
