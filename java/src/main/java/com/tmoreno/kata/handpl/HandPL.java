@@ -1,5 +1,7 @@
 package com.tmoreno.kata.handpl;
 
+import java.util.List;
+
 public final class HandPL {
 
   private final Memory memory;
@@ -11,17 +13,19 @@ public final class HandPL {
   }
 
   public void execute(String instructions) {
-    instructions
+    List<String> instructionsList = instructions
       .codePoints()
       .mapToObj(Character::toString)
-      .forEach(instruction -> {
-        switch (instruction) {
-          case "👆" -> memory.incrementCurrentValue();
-          case "👇" -> memory.decrementCurrentValue();
-          case "👉" -> memory.incrementPointer();
-          case "👈" -> memory.decrementPointer();
-          case "👊" -> printer.print(memory.getCurrentValue());
-        }
-      });
+      .toList();
+
+    for (int i = 0; i < instructionsList.size(); i++) {
+      switch (instructionsList.get(i)) {
+        case "👆" -> memory.incrementCurrentValue();
+        case "👇" -> memory.decrementCurrentValue();
+        case "👉" -> memory.incrementPointer();
+        case "👈" -> memory.decrementPointer();
+        case "👊" -> printer.print(memory.getCurrentValue());
+      }
+    }
   }
 }
